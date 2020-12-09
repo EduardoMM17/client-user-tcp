@@ -1,0 +1,22 @@
+import { Module } from '@nestjs/common';
+import { UserModule } from './user/user.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './user/user.entity';
+import { ConfigModule } from '@nestjs/config';
+
+@Module({
+  imports: [
+    UserModule,
+    TypeOrmModule.forRoot({
+      type: 'mongodb',
+      url: process.env.DATABASE_URL,
+      synchronize: true,
+      useUnifiedTopology: true,
+      entities:[User],
+    }),
+    ConfigModule.forRoot()
+  ],
+  controllers: [],
+  providers: [],
+})
+export class AppModule {}

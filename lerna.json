@@ -1,0 +1,16 @@
+{
+  "command": {
+    "init": {
+      "exact": true
+    },
+    "bootstrap": {
+      "npmClient": "npm",
+      "npmClientArgs": []
+    }
+  },
+  "packages": [
+    "packages/client/client.user",
+    "packages/service/ms-user"
+  ],
+  "version": "0.0.0"
+}
