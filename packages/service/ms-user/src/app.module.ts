@@ -9,14 +9,15 @@ import { ConfigModule } from '@nestjs/config';
     UserModule,
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      url: process.env.DATABASE_URL,
+      url: 'mongodb://localhost/microserviceTask',
       synchronize: true,
       useUnifiedTopology: true,
       entities:[User],
     }),
-    ConfigModule.forRoot()
+    ConfigModule.forRoot(),
   ],
   controllers: [],
-  providers: [],
+  providers: [User],
+  exports: [User]
 })
-export class AppModule {}
+export class MsAppModule {}

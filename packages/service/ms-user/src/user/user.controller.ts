@@ -19,4 +19,34 @@ export class UserController {
         return await this.userService.createUser(createUserDto);
     }
 
+    @MessagePattern('login')
+    async login(loginDto: any){
+        this.logger.log('Login user: ' + JSON.stringify(loginDto));
+        return await this.userService.login(loginDto);
+    }
+
+    @MessagePattern('getUser')
+    async getUser(id: string){
+        this.logger.log('Get user: ' + id);
+        return await this.userService.getUser(id);
+    }
+
+    @MessagePattern('updateUser')
+    async updateUser(updateUserDto: any){
+        this.logger.log('Update user: ' + JSON.stringify(updateUserDto));
+
+        return await this.userService.updateUser(updateUserDto);
+    }
+
+    @MessagePattern('deleteUser')
+    async deleteUser(id: string){
+        this.logger.log('Delete user: ' + id);
+        return await this.userService.deleteUser(id);
+    }
+
+    @MessagePattern('getAllUsers')
+    async getAllusers(){
+        this.logger.log('Get all users!');
+        return await this.userService.getAllUsers();
+    }
 }
