@@ -9,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
     UserModule,
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      url: 'mongodb://localhost/microserviceTask',
+      url: process.env.DATABASE_URL,
       synchronize: true,
       useUnifiedTopology: true,
       entities:[User],

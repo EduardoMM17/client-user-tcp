@@ -9,7 +9,7 @@ import { Roles } from './roles.enum';
 export class UserService {
     private logger = new Logger('UserServiceLogger');
 
-    @Client({ transport: Transport.TCP, options: { host:'127.0.0.1', port: 8877}})
+    @Client({ transport: Transport.TCP, options: { host: process.env.TCP_HOST , port: 8877}})
     private client: ClientTCP;
 
     async createUser(createUserDto: CreateUserDto, userRole: Roles){
@@ -37,7 +37,7 @@ export class UserService {
         if(updateUserDto.id === userId){
             return this.client.send<Object, Object>('updateUser', updateUserDto);
         }
-        
+
         this.logger.error('Id does not match the one from token.');
         throw new UnauthorizedException('Id does not match the one from token.');
     }
